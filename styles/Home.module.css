@@ -5,12 +5,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #121212;
 }
 
 .main {
-  padding: 5rem 0;
+  padding-bottom: 2rem;
   flex: 1;
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -18,15 +20,11 @@
 
 .footer {
   width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
+  height: 20vh;
+  border-top: 2px dotted #ff0000;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.footer img {
-  margin-left: 0.5rem;
 }
 
 .footer a {
@@ -110,8 +108,8 @@
   line-height: 1.5;
 }
 
-.logo {
-  height: 1em;
+.turret {
+  height: 10vh;
 }
 
 @media (max-width: 600px) {

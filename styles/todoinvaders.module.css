@@ -1,0 +1,15 @@
+.todocontainer {
+    width: 95%;
+}
+
+.daysrow {
+    color: white;
+    border-top: 2px dashed white;
+    margin-top: 2rem;
+}
+
+.invader {
+    position: absolute;
+    height: 5rem;
+    fill: white;
+}
