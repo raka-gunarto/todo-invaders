@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, cloneElement } from "react";
 import styles from "../styles/todoinvaders.module.css";
 
 export default function TodoInvaders({ numdays }) {
@@ -6,12 +6,12 @@ export default function TodoInvaders({ numdays }) {
     {
       title: "example",
       description: "bleh",
-      duedate: Date.now() + (1000 * 60 * 60 * 24 * 6),
+      offset: Math.random() * 70 + 10,
+      duedate: Date.now() + 1000 * 60 * 60 * 24 * 12,
     },
   ]);
 
   const [trigger, setTrigger] = useState(0);
-
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,15 @@ export default function TodoInvaders({ numdays }) {
   useEffect(() => {
     //setTodos(localStorage.getItem("todos"));
     setRows(getRows(todos, numdays));
-    setInterval(setTrigger(Date.now()), 60000);
+
+    let interval = setInterval(() => {
+      setTrigger(Date.now());
+    }, 1000);
+
+    // cleanup intervals
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   // trigger on time trigger
@@ -44,11 +52,17 @@ function getRows(todos, numdays) {
       if (diffDays == daysLeft) {
         let drop = -3 * (((todo.duedate - today) / (1000 * 60 * 60 * 24)) % 1);
         invaders.push(
-          <img
-            src="/invader.svg"
+          <figure
+            style={{
+              transform: `translateY(${drop}rem) translateX(${todo.offset}vw)`,
+            }}
             className={styles.invader}
-            style={{ transform: `translateY(${drop}rem)` }}
-          ></img>
+          >
+            <img
+              src={Math.random() <= 0.5 ? "/invader.svg" : "/invader2.svg"}
+            ></img>
+            <figcaption>{todo.title}</figcaption>
+          </figure>
         );
       }
     }

@@ -10,6 +10,13 @@
 
 .invader {
     position: absolute;
+    text-align: center;
+}
+
+.invader img {
     height: 5rem;
-    fill: white;
+}
+
+.invader figcaption {
+    text-align: center;
 }
