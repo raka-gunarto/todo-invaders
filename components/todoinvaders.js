@@ -11,7 +11,6 @@ export default function TodoInvaders({ numdays }) {
     },
   ]);
 
-  const [trigger, setTrigger] = useState(0);
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
@@ -24,7 +23,7 @@ export default function TodoInvaders({ numdays }) {
     setRows(getRows(todos, numdays));
 
     let interval = setInterval(() => {
-      setTrigger(Date.now());
+      setRows(getRows(todos, numdays));
     }, 1000);
 
     // cleanup intervals
@@ -32,11 +31,6 @@ export default function TodoInvaders({ numdays }) {
       clearInterval(interval);
     };
   }, []);
-
-  // trigger on time trigger
-  useEffect(() => {
-    setRows(getRows(todos, numdays));
-  }, [trigger]);
 
   return <div className={styles.todocontainer}>{rows}</div>;
 }
