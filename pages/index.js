@@ -19,8 +19,18 @@ export default function Home() {
     ) + Math.PI / 2}rad)`;
   }
 
+  const pew = () => {
+    if (turret == null) return;
+    turret.classList.add(styles.shoot);
+  }
+
+  const pewstop = () => {
+    if (turret == null) return;
+    turret.classList.remove(styles.shoot);
+  }
+
   return (
-    <div className={styles.container} onMouseMove={rotateToMouse}>
+    <div className={styles.container} onMouseMove={rotateToMouse} onClick={pew}>
       <Head>
         <title>TODO Invaders! - Raka Gunarto</title>
         <link rel="icon" href="/favicon.ico" />
@@ -35,6 +45,7 @@ export default function Home() {
           src="/turret.svg"
           alt="Turret"
           className={styles.turret}
+          onAnimationEnd={pewstop}
           ref={(ref) => {
             setTurret(ref);
           }}

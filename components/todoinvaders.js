@@ -12,30 +12,46 @@ export default function TodoInvaders({ numdays }) {
   ]);
 
   const [rows, setRows] = useState([]);
+  const [updateInterval, setUpdateInterval] = useState(null);
+
+  const destroyTodo = (e, idx) => {
+    e.target.onanimationend = () => {
+      todos.splice(idx, 1);
+      setTodos(todos);
+    };
+
+    e.target.classList.add(styles.explode);
+  };
 
   useEffect(() => {
     localStorage.setItem("todos", todos);
+    if (updateInterval)
+      clearInterval(updateInterval);
+
+    setRows(getRows(todos, numdays, destroyTodo));
+    setUpdateInterval(
+      setInterval(() => {
+        setRows(getRows(todos, numdays, destroyTodo));
+      }, 1000)
+    );
   }, [todos]);
 
   // trigger once in the beginning
   useEffect(() => {
     //setTodos(localStorage.getItem("todos"));
-    setRows(getRows(todos, numdays));
+    setRows(getRows(todos, numdays, destroyTodo));
 
-    let interval = setInterval(() => {
-      setRows(getRows(todos, numdays));
-    }, 1000);
-
-    // cleanup intervals
-    return () => {
-      clearInterval(interval);
-    };
+    setUpdateInterval(
+      setInterval(() => {
+        setRows(getRows(todos, numdays, destroyTodo));
+      }, 1000)
+    );
   }, []);
 
   return <div className={styles.todocontainer}>{rows}</div>;
 }
 
-function getRows(todos, numdays) {
+function getRows(todos, numdays, destroyTodo) {
   let rows = [];
   for (let i = 0; i < numdays; ++i) {
     let invaders = [];
@@ -51,10 +67,16 @@ function getRows(todos, numdays) {
               transform: `translateY(${drop}rem) translateX(${todo.offset}vw)`,
             }}
             className={styles.invader}
+            onClick={(e) => destroyTodo(e, todos.indexOf(todo))}
           >
             <img
-              src={Math.random() <= 0.5 ? "/invader.svg" : "/invader2.svg"}
+              src={
+                new Date().getSeconds() % 2 == 0
+                  ? "/invader.svg"
+                  : "/invader2.svg"
+              }
             ></img>
+            <span className={styles.description}>{todo.description}</span>
             <figcaption>{todo.title}</figcaption>
           </figure>
         );

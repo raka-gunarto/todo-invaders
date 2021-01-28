@@ -112,6 +112,27 @@
   height: 10vh;
 }
 
+@keyframes pew {
+  0% {
+    padding-top: 0;
+    height: 10vh;
+  }
+
+  25% {
+    padding-top: 2rem;
+    height: 13vh;
+  }
+
+  100% {
+    padding-top: 0;
+    height: 10vh;
+  }
+}
+.turret.shoot {
+  position: relative;
+  animation: pew 1s ease-in-out; 
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
