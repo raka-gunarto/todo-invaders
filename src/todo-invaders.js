@@ -54,7 +54,7 @@ export default function TodoInvaders({ numdays }) {
     );
   }, [todos]);
 
-  useEffect(() => setTodos(JSON.parse(localStorage.getItem("todos"))), []);
+  useEffect(() => setTodos(JSON.parse(localStorage.getItem("todos")) || [] ));
 
   return (
     <React.Fragment>
