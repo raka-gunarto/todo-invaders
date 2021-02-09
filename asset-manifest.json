@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/todo-invaders/static/css/main.452f12d4.chunk.css",
+    "main.js": "/todo-invaders/static/js/main.b5ff1a2c.chunk.js",
+    "main.js.map": "/todo-invaders/static/js/main.b5ff1a2c.chunk.js.map",
+    "runtime-main.js": "/todo-invaders/static/js/runtime-main.c9ea429a.js",
+    "runtime-main.js.map": "/todo-invaders/static/js/runtime-main.c9ea429a.js.map",
+    "static/js/2.b1621c2a.chunk.js": "/todo-invaders/static/js/2.b1621c2a.chunk.js",
+    "static/js/2.b1621c2a.chunk.js.map": "/todo-invaders/static/js/2.b1621c2a.chunk.js.map",
+    "index.html": "/todo-invaders/index.html",
+    "static/css/main.452f12d4.chunk.css.map": "/todo-invaders/static/css/main.452f12d4.chunk.css.map",
+    "static/js/2.b1621c2a.chunk.js.LICENSE.txt": "/todo-invaders/static/js/2.b1621c2a.chunk.js.LICENSE.txt",
+    "static/media/invader.52b2ab26.svg": "/todo-invaders/static/media/invader.52b2ab26.svg",
+    "static/media/invader2.20e4105d.svg": "/todo-invaders/static/media/invader2.20e4105d.svg",
+    "static/media/turret.739cfa2c.svg": "/todo-invaders/static/media/turret.739cfa2c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c9ea429a.js",
+    "static/js/2.b1621c2a.chunk.js",
+    "static/css/main.452f12d4.chunk.css",
+    "static/js/main.b5ff1a2c.chunk.js"
+  ]
+}
